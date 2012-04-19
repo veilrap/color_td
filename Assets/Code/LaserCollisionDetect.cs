@@ -6,17 +6,17 @@ public class LaserCollisionDetect : MonoBehaviour {
     public bool allowCollision = true;
     public GameObject LaserBeamPart;
 
-    public GameObject lastSpawned;
-
 	// Use this for initialization
 	void Start () {
         
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        //if (!this.renderer.isVisible)
-        //    Destroy(this.gameObject);
+	void FixedUpdate () {
+        if (this.transform.position.x > 20 || this.transform.position.x < -20 || this.transform.position.z > 20 || this.transform.position.z < -20)
+        {
+                Destroy(this.gameObject);
+        }
 	}
 
     void OnTriggerEnter(Collider collider)
@@ -39,6 +39,27 @@ public class LaserCollisionDetect : MonoBehaviour {
                 float nAngle = 2 * delta + revAngle;
 
                 this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, nAngle, this.transform.eulerAngles.z);
+            }
+            if (collider.name == "OneWayMirror")
+            {
+                float yNormal = collider.transform.eulerAngles.y;
+                float myAngle = this.transform.eulerAngles.y;
+
+                if (Mathf.Abs(Mathf.DeltaAngle(yNormal, myAngle)) > 90)
+                {
+                    float revAngle = myAngle - 180;
+
+                    float delta = yNormal - revAngle;
+                    float nAngle = 2 * delta + revAngle;
+
+
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, nAngle, this.transform.eulerAngles.z);
+                }
+                else
+                {
+                    Debug.Log("OneWay Through " + myAngle + " " + yNormal);
+                    Debug.Log(Mathf.DeltaAngle(yNormal, myAngle));
+                }
             }
             if (collider.name == "Prisim")
             {
