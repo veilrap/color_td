@@ -1,0 +1,8 @@
+C:\Users\Matthew\Documents\Unity\TestTD\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Matthew\Documents\Unity\TestTD\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Matthew\Documents\Unity\TestTD\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Matthew\Documents\Unity\TestTD\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Matthew\Documents\Unity\TestTD\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Matthew\Documents\Unity\TestTD\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Documents\Unity\TestTD\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Matthew\Documents\Unity\TestTD\obj\Debug\Assembly-CSharp-firstpass.pdb
