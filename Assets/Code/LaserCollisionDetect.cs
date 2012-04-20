@@ -55,10 +55,31 @@ public class LaserCollisionDetect : MonoBehaviour {
 
                     this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, nAngle, this.transform.eulerAngles.z);
                 }
+            }
+            if (collider.name == "Collimator")
+            {
+                float yNormal = collider.transform.eulerAngles.y;
+
+                float myAngle = this.transform.eulerAngles.y;
+
+                if (Mathf.Abs(Mathf.DeltaAngle(yNormal, myAngle)) <= 90)
+                {
+
+                    float nAngle = yNormal;
+
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, nAngle, this.transform.eulerAngles.z);
+
+                    Vector3 pos = collider.transform.position;
+                    this.transform.position = pos;
+                }
                 else
                 {
-                    Debug.Log("OneWay Through " + myAngle + " " + yNormal);
-                    Debug.Log(Mathf.DeltaAngle(yNormal, myAngle));
+                    float nAngle = yNormal + 180;
+
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, nAngle, this.transform.eulerAngles.z);
+
+                    Vector3 pos = collider.transform.position;
+                    this.transform.position = pos;
                 }
             }
             if (collider.name == "Prisim")
