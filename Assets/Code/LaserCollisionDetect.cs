@@ -64,34 +64,53 @@ public class LaserCollisionDetect : MonoBehaviour {
             if (collider.name == "Prisim")
             {
                 Transform parent = this.transform.parent;
-                this.GetComponent<ParticleColor>().color = new Color(1,0,0);
+                Color originalColor = this.GetComponent<ParticleColor>().color;
 
                 Vector3 pos = collider.transform.position;
                 this.transform.position = pos;
 
                 //Green Light
-                GameObject greenLight = (GameObject)Instantiate(this.gameObject);
-                greenLight.transform.parent = parent;
-                greenLight.transform.position = this.transform.position;
-                greenLight.transform.rotation = this.transform.rotation;
+                if (originalColor.g > 0.9)
+                {
+                    
+                    GameObject greenLight = (GameObject)Instantiate(this.gameObject);
+                    greenLight.transform.parent = parent;
+                    greenLight.transform.position = this.transform.position;
+                    greenLight.transform.rotation = this.transform.rotation;
 
-                greenLight.GetComponent<LaserCollisionDetect>().allowCollision = false;
+                    greenLight.GetComponent<LaserCollisionDetect>().allowCollision = false;
 
-                greenLight.GetComponent<ParticleColor>().color = new Color(0, 1, 0);
+                    greenLight.GetComponent<ParticleColor>().color = new Color(0, 1, 0);
 
-                greenLight.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z);
+                    greenLight.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z);
+                }
 
                 //Blue Light
-                GameObject blueLight = (GameObject)Instantiate(this.gameObject);
-                blueLight.transform.parent = parent;
-                blueLight.transform.position = this.transform.position;
-                blueLight.transform.rotation = this.transform.rotation;
+                if (originalColor.b > 0.9)
+                {
+                    
+                    GameObject blueLight = (GameObject)Instantiate(this.gameObject);
+                    blueLight.transform.parent = parent;
+                    blueLight.transform.position = this.transform.position;
+                    blueLight.transform.rotation = this.transform.rotation;
 
-                blueLight.GetComponent<LaserCollisionDetect>().allowCollision = false;
+                    blueLight.GetComponent<LaserCollisionDetect>().allowCollision = false;
 
-                blueLight.GetComponent<ParticleColor>().color = new Color(0, 0, 1);
+                    blueLight.GetComponent<ParticleColor>().color = new Color(0, 0, 1);
 
-                blueLight.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
+                    blueLight.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
+                }
+
+                //Red Light
+                if (originalColor.r > 0.9)
+                {
+
+                    this.GetComponent<ParticleColor>().color = new Color(1, 0, 0);
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
