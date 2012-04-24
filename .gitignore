@@ -1,0 +1,57 @@
+#Based on info from http://unity3d.com/support/documentation/Manual/ExternalVersionControlSystemSupport.html
+
+#Unity3d Stuff
+Library/*
+
+!Library/*.asset
+!Library/AssetImportState
+!Library/AssetVersioning.db
+!Library/BuildPlayer.prefs
+!Library/ScriptMapper
+!Library/assetservercachev3
+!Library/expandedItems
+!Library/guidmapper
+!Library/unity default resources
+!Library/unity editor resources
+
+/Project/Project.userprefs
+/Project/Assembly-CSharp.csproj
+/Project/Assembly-CSharp.pidb
+/Project/Assembly-CSharp-Editor.csproj
+/Project/Assembly-CSharp-Editor.pidb
+/Project/Assembly-CSharp-Editor-vs.csproj
+/Project/Assembly-CSharp-firstpass.csproj
+/Project/Assembly-CSharp-firstpass.pidb
+/Project/Assembly-CSharp-firstpass-vs.csproj
+/Project/Assembly-CSharp-vs.csproj
+/Project/Assembly-UnityScript-firstpass.pidb
+/Project/Assembly-UnityScript-firstpass.unityproj
+/Project/Assembly-UnityScript-firstpass-vs.unityproj
+/Project/Project.suo
+
+*.unityproj
+*.userprefs
+bios/*
+#binary stuff
+obj/*
+Temp/*
+
+#Visual Studio Stuff
+*.sln
+*.suo
+*.pidb
+*.swp
+*.csproj
+
+# windows stuff
+# Thumbs.db.meta should not exist, but every now and then it happens
+Thumbs.db
+Thumbs.db.meta
+
+# wired apple stuff
+# .DS_Store.meta should not exist, but every now and then it happens
+.DS_Store
+.DS_Store.meta
+
+#Android Stuff
+*.apk
