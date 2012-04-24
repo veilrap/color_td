@@ -67,7 +67,7 @@ public class LightPrisim : MonoBehaviour {
                 }
                 else
                 {
-                    Destroy(this.gameObject);
+                    Destroy(photon.gameObject);
                 }
             }
         }
