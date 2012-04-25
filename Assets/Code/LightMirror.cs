@@ -21,6 +21,9 @@ public class LightMirror : MonoBehaviour {
             {
                 photon.lastCollision = this;
 
+                Vector3 pos = this.transform.position;
+                photon.transform.position = pos;
+
                 float yNormal = this.transform.eulerAngles.y;
                 float myAngle = photon.transform.eulerAngles.y;
 

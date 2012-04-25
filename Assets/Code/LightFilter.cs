@@ -3,9 +3,7 @@ using System.Collections;
 
 public class LightFilter : MonoBehaviour {
 
-    public bool allowRed = true;
-    public bool allowGreen = false;
-    public bool allowBlue = false;
+    public Color allowedColors = new Color(1, 0, 1);
 
     // Use this for initialization
     void Start()
@@ -26,7 +24,12 @@ public class LightFilter : MonoBehaviour {
             if (photon.lastCollision != this)
             {
                 photon.lastCollision = this;
+
                 ParticleColor pc = photon.GetComponent<ParticleColor>();
+
+                bool allowRed = (allowedColors.r > 0.5f);
+                bool allowGreen = (allowedColors.g > 0.5f);
+                bool allowBlue = (allowedColors.b > 0.5f);
 
                 Vector3 pos = this.transform.position;
                 photon.transform.position = pos;
