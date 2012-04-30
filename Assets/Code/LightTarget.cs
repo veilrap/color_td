@@ -6,15 +6,31 @@ public class LightTarget : MonoBehaviour {
     public Color successColor = new Color(1, 1, 1);
     public float threshold = 0.3f;
 
+    public bool successful = false;
+    public float countDown = 1.0f;
+    float currentCount = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
 
+    void Update()
+    {
+        if (currentCount > 0)
+        {
+            currentCount -= Time.deltaTime;
+        }
+        else
+        {
+            successful = false;
+        }
+    }
+
     void OnTriggerEnter(Collider collider)
     {
-        LaserCollisionDetect photon;
-        if (photon = collider.GetComponent<LaserCollisionDetect>())
+        LightCollisionDetect photon;
+        if (photon = collider.GetComponent<LightCollisionDetect>())
         {
             if (photon.lastCollision != this)
             {
@@ -32,7 +48,8 @@ public class LightTarget : MonoBehaviour {
 
                 if (totalDelta < 0.3f)
                 {
-                    //Do Successful Hit!
+                    successful = true;
+                    currentCount = countDown;
                 }
 
                 Destroy(photon.gameObject);

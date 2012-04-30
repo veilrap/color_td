@@ -5,7 +5,7 @@ public class Move : MonoBehaviour {
 
     public float speedX = 0;
     public float speedY = 0;
-    public float speedZ = 1;
+    public float speedZ = 4;
 
 	// Use this for initialization
 	void Start () {

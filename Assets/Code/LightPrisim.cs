@@ -14,8 +14,8 @@ public class LightPrisim : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        LaserCollisionDetect photon;
-        if (photon = collider.GetComponent<LaserCollisionDetect>())
+        LightCollisionDetect photon;
+        if (photon = collider.GetComponent<LightCollisionDetect>())
         {
             if (photon.lastCollision != this)
             {
@@ -36,7 +36,7 @@ public class LightPrisim : MonoBehaviour {
                     greenLight.transform.position = photon.transform.position;
                     greenLight.transform.rotation = photon.transform.rotation;
 
-                    greenLight.GetComponent<LaserCollisionDetect>().lastCollision = this;
+                    greenLight.GetComponent<LightCollisionDetect>().lastCollision = this;
 
                     greenLight.GetComponent<ParticleColor>().color = new Color(0, 1, 0);
 
@@ -52,7 +52,7 @@ public class LightPrisim : MonoBehaviour {
                     blueLight.transform.position = photon.transform.position;
                     blueLight.transform.rotation = photon.transform.rotation;
 
-                    blueLight.GetComponent<LaserCollisionDetect>().lastCollision = this;
+                    blueLight.GetComponent<LightCollisionDetect>().lastCollision = this;
 
                     blueLight.GetComponent<ParticleColor>().color = new Color(0, 0, 1);
 

@@ -14,8 +14,8 @@ public class LightMirror : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        LaserCollisionDetect photon;
-        if (photon = collider.GetComponent<LaserCollisionDetect>())
+        LightCollisionDetect photon;
+        if (photon = collider.GetComponent<LightCollisionDetect>())
         {
             if (photon.lastCollision != this)
             {
