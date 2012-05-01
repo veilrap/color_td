@@ -11,20 +11,20 @@ public class GridPosition : MonoBehaviour {
 	void Start () {
         if (useTransformCoords)
         {
-            x = Mathf.RoundToInt(transform.position.x);
-            z = Mathf.RoundToInt(transform.position.z);
+            x = Mathf.RoundToInt(transform.localPosition.x);
+            z = Mathf.RoundToInt(transform.localPosition.z);
         }
         else
         {
-            transform.position = new Vector3(x, transform.position.y, z);
+            transform.localPosition = new Vector3(x, transform.localPosition.y, z);
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Mathf.RoundToInt(transform.position.x) != x || Mathf.RoundToInt(transform.position.z) != z)
+        if (Mathf.RoundToInt(transform.localPosition.x) != x || Mathf.RoundToInt(transform.localPosition.z) != z)
         {
-            transform.position = new Vector3(x, transform.position.y, z);
+            transform.localPosition = new Vector3(x, transform.localPosition.y, z);
         }
 	}
 }

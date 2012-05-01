@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EndLevel : MonoBehaviour {
 	
+	public GameObject nextLevel = null;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -21,6 +23,17 @@ public class EndLevel : MonoBehaviour {
 				if(spawner = child.GetComponent<SpawnLightBeamPart>()) {
 					spawner.spawnEnabled = false;
 				}
+			}
+			
+			if(nextLevel) {
+				chameleon.transform.parent = nextLevel.transform;
+				for(int i=0;i<nextLevel.transform.GetChildCount();i++) {
+				Transform child = nextLevel.transform.GetChild(i);
+				SpawnLightBeamPart spawner;
+				if(spawner = child.GetComponent<SpawnLightBeamPart>()) {
+					spawner.spawnEnabled = true;
+				}
+			}
 			}
 		}
 		Destroy (this.gameObject);

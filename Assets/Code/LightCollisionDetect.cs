@@ -14,7 +14,7 @@ public class LightCollisionDetect : MonoBehaviour {
 	void FixedUpdate () {
         if (this.transform.position.x > 20 || this.transform.position.x < -20 || this.transform.position.z > 20 || this.transform.position.z < -20)
         {
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
         }
 	}
 

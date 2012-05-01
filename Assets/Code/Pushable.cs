@@ -23,7 +23,7 @@ public class Pushable : MonoBehaviour {
                 GridPosition gridPosition;
                 if (gridPosition = this.GetComponent<GridPosition>())
                 {
-                    Vector3 pushDirection = this.transform.position - pusher.transform.position;
+                    Vector3 pushDirection = this.transform.localPosition - pusher.transform.localPosition;
                     pushDirection.y = 0;
                     if (Mathf.Abs(pushDirection.x) > Mathf.Abs(pushDirection.z))
                     {
@@ -43,6 +43,9 @@ public class Pushable : MonoBehaviour {
 
                     int xTarg = gridPosition.x + xDiff;
                     int zTarg = gridPosition.z + zDiff;
+					
+					Debug.Log("xTarg: "+xTarg);
+					Debug.Log("zTarg: "+zTarg);
 
                     //((Check if Blocked))
                     if (transform.parent)
