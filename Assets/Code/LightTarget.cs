@@ -4,11 +4,20 @@ using System.Collections;
 public class LightTarget : MonoBehaviour {
 
     public Color successColor = new Color(1, 1, 1);
+    
     public float threshold = 0.3f;
 
     public bool successful = false;
     public float countDown = 0.25f;
     float currentCount = 0.0f;
+
+    public float currentRed = 0.0f;
+    public float currentGreen = 0.0f;
+    public float currentBlue = 0.0f;
+
+    public float redCount = 0.0f;
+    public float greenCount = 0.0f;
+    public float blueCount = 0.0f;
 
     public bool allowPassThru = false;
 
@@ -19,14 +28,31 @@ public class LightTarget : MonoBehaviour {
 
     void Update()
     {
-        if (currentCount > 0)
+        float deltaR = Mathf.Abs(currentRed - successColor.r);
+        float deltaG = Mathf.Abs(currentGreen - successColor.g);
+        float deltaB = Mathf.Abs(currentBlue - successColor.b);
+        float totalDelta = deltaR + deltaG + deltaB;
+
+        if (totalDelta < 0.3f)
         {
-            currentCount -= Time.deltaTime;
+            successful = true;
         }
         else
         {
             successful = false;
         }
+
+        redCount -= Time.deltaTime;
+        greenCount -= Time.deltaTime;
+        blueCount -= Time.deltaTime;
+
+        if (redCount < 0)
+            currentRed = 0;
+        if (greenCount < 0)
+            currentGreen = 0;
+        if (blueCount < 0)
+            currentBlue = 0;
+        
         this.renderer.material.color = successColor;
     }
 
@@ -44,15 +70,20 @@ public class LightTarget : MonoBehaviour {
 
                 ParticleColor pc = photon.GetComponent<ParticleColor>();
 
-                float deltaR = Mathf.Abs(pc.color.r - successColor.r);
-                float deltaG = Mathf.Abs(pc.color.g - successColor.g);
-                float deltaB = Mathf.Abs(pc.color.b - successColor.b);
-                float totalDelta = deltaR + deltaG + deltaB;
-
-                if (totalDelta < 0.3f)
+                if (pc.color.r > 0.1)
                 {
-                    successful = true;
-                    currentCount = countDown;
+                    currentRed = pc.color.r;
+                    redCount = countDown;
+                }
+                if (pc.color.g > 0.1)
+                {
+                    currentGreen = pc.color.g;
+                    greenCount = countDown;
+                }
+                if (pc.color.b > 0.1)
+                {
+                    currentBlue = pc.color.b;
+                    blueCount = countDown;
                 }
 
                 if(!allowPassThru) 
