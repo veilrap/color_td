@@ -3,12 +3,11 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
 
-    public LightTarget triggeringTarget;
-
     public Vector3 initialPostion;
     public Vector3 openOffset = new Vector3(0, 0, 2);
 
     bool opened = false;
+    public bool lockedOpen = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,18 +16,36 @@ public class Door : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (triggeringTarget)
+        bool allTargets = true;
+        for (int i = 0; i < transform.GetChildCount(); i++)
         {
-            if (triggeringTarget.successful && !opened)
+            Transform child = transform.GetChild(i);
+            
+            if (child.GetComponent<LightTarget>())
             {
-                opened = true;
-                transform.position += openOffset;
+                if (!child.GetComponent<LightTarget>().successful)
+                    allTargets = false;
             }
-            if (!triggeringTarget.successful && opened)
-            {
-                opened = false;
-                transform.position -= openOffset;
-            }
+
+            
+        }
+
+        if (allTargets && !opened || lockedOpen)
+        {
+            opened = true;
+
+            collider.enabled = false;
+            renderer.enabled = false;
+
+            //transform.position += openOffset;
+        }
+        if (!allTargets && opened && !lockedOpen)
+        {
+            opened = false;
+
+            collider.enabled = true;
+            renderer.enabled = true;
+            //transform.position -= openOffset;
         }
 	}
 }

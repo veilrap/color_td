@@ -7,8 +7,10 @@ public class LightTarget : MonoBehaviour {
     public float threshold = 0.3f;
 
     public bool successful = false;
-    public float countDown = 1.0f;
+    public float countDown = 0.25f;
     float currentCount = 0.0f;
+
+    public bool allowPassThru = false;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +27,7 @@ public class LightTarget : MonoBehaviour {
         {
             successful = false;
         }
+        this.renderer.material.color = successColor;
     }
 
     void OnTriggerEnter(Collider collider)
@@ -52,7 +55,8 @@ public class LightTarget : MonoBehaviour {
                     currentCount = countDown;
                 }
 
-                Destroy(photon.gameObject);
+                if(!allowPassThru) 
+                    Destroy(photon.gameObject);
             }
         }
     }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LightPrisim : MonoBehaviour {
 
+    public bool flipPrisimHorizontally = false;
+
 	// Use this for initialization
 	void Start () {
         
@@ -40,7 +42,14 @@ public class LightPrisim : MonoBehaviour {
 
                     greenLight.GetComponent<ParticleColor>().color = new Color(0, 1, 0);
 
-                    greenLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y - 45, photon.transform.eulerAngles.z);
+                    if (flipPrisimHorizontally)
+                    {
+                        greenLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y + 45, photon.transform.eulerAngles.z);
+                    }
+                    else
+                    {
+                        greenLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y - 45, photon.transform.eulerAngles.z);
+                    }
                 }
 
                 //Blue Light
@@ -56,7 +65,14 @@ public class LightPrisim : MonoBehaviour {
 
                     blueLight.GetComponent<ParticleColor>().color = new Color(0, 0, 1);
 
-                    blueLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y - 90, photon.transform.eulerAngles.z);
+                    if (flipPrisimHorizontally)
+                    {
+                        blueLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y + 90, photon.transform.eulerAngles.z);
+                    }
+                    else
+                    {
+                        blueLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y - 90, photon.transform.eulerAngles.z);
+                    }
                 }
 
                 //Red Light

@@ -17,11 +17,21 @@ public class EndLevel : MonoBehaviour {
 				Transform child = transform.parent.GetChild(i);
 				Door door;
 				if(door = child.GetComponent<Door>()) {
-					Destroy(door.gameObject);
+                    door.lockedOpen = true;
+					//Destroy(door.gameObject);
 				}
+                
 				SpawnLightBeamPart spawner;
 				if(spawner = child.GetComponent<SpawnLightBeamPart>()) {
 					spawner.spawnEnabled = false;
+                    ParticleColor pc;
+                    for (int j = 0; j < child.GetChildCount(); j++)
+                    {
+                        if (pc = spawner.transform.GetChild(j).GetComponent<ParticleColor>())
+                        {
+                            Destroy(pc.gameObject);
+                        }
+                    }
 				}
 			}
 			
