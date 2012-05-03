@@ -7,6 +7,8 @@ public class SpawnLightBeamPart : MonoBehaviour {
     public float coolDown = 0.05f;
     public float countUp = 0f;
 
+    public Color lightColor = new Color(1, 1, 1);
+
     public bool spawnEnabled = false;
 
 	// Use this for initialization
@@ -25,6 +27,7 @@ public class SpawnLightBeamPart : MonoBehaviour {
                 go.transform.parent = this.transform;
                 //go.transform.Rotate(new Vector3(90, 0, 0));
                 go.transform.rotation = go.transform.parent.rotation;
+                go.GetComponent<ParticleColor>().color = lightColor;
                 countUp -= coolDown;
             }
         }

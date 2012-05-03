@@ -36,14 +36,14 @@ public class EndLevel : MonoBehaviour {
 			}
 			
 			if(nextLevel) {
-				chameleon.transform.parent = nextLevel.transform;
+				//chameleon.transform.parent = nextLevel.transform;
 				for(int i=0;i<nextLevel.transform.GetChildCount();i++) {
-				Transform child = nextLevel.transform.GetChild(i);
-				SpawnLightBeamPart spawner;
-				if(spawner = child.GetComponent<SpawnLightBeamPart>()) {
-					spawner.spawnEnabled = true;
-				}
-			}
+				    Transform child = nextLevel.transform.GetChild(i);
+				    SpawnLightBeamPart spawner;
+				    if(spawner = child.GetComponent<SpawnLightBeamPart>()) {
+					    spawner.spawnEnabled = true;
+				    }
+			    }
 			}
 		}
 		Destroy (this.gameObject);

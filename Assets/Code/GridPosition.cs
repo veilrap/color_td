@@ -10,18 +10,24 @@ public class GridPosition : MonoBehaviour {
 
     int roundToStepGap(float f)
     {
-        float modded = f % stepGap;
+        if (f == 0.0f)
+            return 0;
+        float sign = 1;
+        if (f < 0)
+            sign = -1;
+
+        float modded = Mathf.Abs(f) % stepGap;
         float halfGap = (float)stepGap / 2.0f;
         if (modded < halfGap)
         {
-            f = f - modded;
+            f = Mathf.Abs(f) - modded;
         }
         else
         {
-            f = f - modded + stepGap;
+            f = Mathf.Abs(f) - modded + stepGap;
         }
 
-        return Mathf.RoundToInt(f);
+        return Mathf.RoundToInt(f*sign);
     }
 
 	// Use this for initialization
