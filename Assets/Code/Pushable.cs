@@ -59,16 +59,14 @@ public class Pushable : MonoBehaviour {
                                 if (otherPosition.x == xTarg && otherPosition.z == zTarg)
                                     allowMove = false;
                             }
-                        }
-
-                        GridPositionBounds gpb;
-                        if (gpb = transform.parent.GetComponent<GridPositionBounds>())
-                        {
-                            if (xTarg < gpb.minX || xTarg > gpb.maxX || zTarg < gpb.minZ || zTarg > gpb.maxZ)
+                            Collider otherCollider;
+                            if (otherCollider = transform.parent.GetChild(i).GetComponent<Collider>())
                             {
-                                allowMove = false;
+                                if (otherCollider.bounds.Contains(new Vector3(transform.position.x + xDiff, transform.position.y, transform.position.z + zDiff)))
+                                    allowMove = false;
                             }
                         }
+
                         if (allowMove)
                         {
                             gridPosition.x = xTarg;

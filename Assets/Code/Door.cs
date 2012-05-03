@@ -17,9 +17,9 @@ public class Door : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         bool allTargets = true;
-        for (int i = 0; i < transform.GetChildCount(); i++)
+        for (int i = 0; i < transform.parent.GetChildCount(); i++)
         {
-            Transform child = transform.GetChild(i);
+            Transform child = transform.parent.GetChild(i);
             
             if (child.GetComponent<LightTarget>())
             {
