@@ -4,6 +4,7 @@ using System.Collections;
 public class LightFilter : MonoBehaviour {
 
     public Color allowedColors = new Color(1, 0, 1);
+    public bool dontTint = false;
 
     // Use this for initialization
     void Start()
@@ -14,6 +15,8 @@ public class LightFilter : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!dontTint)
+            this.renderer.material.color = allowedColors;
     }
 
     void OnTriggerEnter(Collider collider)

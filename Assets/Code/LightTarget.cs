@@ -8,6 +8,7 @@ public class LightTarget : MonoBehaviour {
     public float threshold = 0.3f;
 
     public bool successful = false;
+    public bool finished = false;
     public float countDown = 0.25f;
     float currentCount = 0.0f;
 
@@ -23,11 +24,12 @@ public class LightTarget : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
 
     void Update()
     {
+
         float deltaR = Mathf.Abs(currentRed - successColor.r);
         float deltaG = Mathf.Abs(currentGreen - successColor.g);
         float deltaB = Mathf.Abs(currentBlue - successColor.b);
@@ -54,6 +56,19 @@ public class LightTarget : MonoBehaviour {
             currentBlue = 0;
         
         this.renderer.material.color = successColor;
+
+        if (successful || finished)
+        { 
+            this.light.color = successColor;
+            this.light.enabled = true;
+            this.renderer.material.shader = Shader.Find("Self-Illumin/Bumped Specular");
+            
+        }
+        else
+        {
+            this.light.enabled = false;
+            this.renderer.material.shader = Shader.Find("Diffuse");
+        }
     }
 
     void OnTriggerEnter(Collider collider)

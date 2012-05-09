@@ -29,6 +29,8 @@ public class SpawnLightBeamPart : MonoBehaviour {
                 go.transform.rotation = go.transform.parent.rotation;
                 go.GetComponent<ParticleColor>().color = lightColor;
                 countUp -= coolDown;
+                go.transform.position += new Vector3(0, 0.1f, 0);
+                go.transform.Translate(new Vector3(0, 0, 1f));
             }
         }
 	}

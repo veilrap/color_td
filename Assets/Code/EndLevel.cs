@@ -33,6 +33,12 @@ public class EndLevel : MonoBehaviour {
                         }
                     }
 				}
+
+                LightTarget target;
+                if (target = child.GetComponent<LightTarget>())
+                {
+                    target.finished = true;
+                }
 			}
 			
 			if(nextLevel) {

@@ -22,5 +22,13 @@ public class OverheadControl : MonoBehaviour {
             Vector3 movement = new Vector3(hAxis * moveSpeed * timeDelta, 0, vAxis * moveSpeed * timeDelta);
             this.transform.position += movement;
         }
+        if (hAxis > 0)
+        {
+            this.renderer.material.mainTextureScale = new Vector2(Mathf.Abs(this.renderer.material.mainTextureScale.x)*-1,this.renderer.material.mainTextureScale.y);
+        }
+        if (hAxis < 0) 
+        {
+            this.renderer.material.mainTextureScale = new Vector2(Mathf.Abs(this.renderer.material.mainTextureScale.x),this.renderer.material.mainTextureScale.y);
+        }
 	}
 }
