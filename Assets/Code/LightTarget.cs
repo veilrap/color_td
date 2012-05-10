@@ -60,6 +60,10 @@ public class LightTarget : MonoBehaviour {
         if (successful || finished)
         { 
             this.light.color = successColor;
+            if (successColor.r > 0.9 && successColor.g > 0.9 && successColor.b > 0.9)
+            {
+                this.light.color = new Color(0.7f,0.7f,1);
+            }
             this.light.enabled = true;
             this.renderer.material.shader = Shader.Find("Self-Illumin/Bumped Specular");
             
