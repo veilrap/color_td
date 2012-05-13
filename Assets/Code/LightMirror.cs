@@ -31,7 +31,8 @@ public class LightMirror : MonoBehaviour {
 
                 float delta = yNormal - revAngle;
                 float nAngle = 2 * delta + revAngle;
-
+				
+				
                 photon.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, nAngle, photon.transform.eulerAngles.z);
             }
         }
