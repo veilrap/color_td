@@ -25,8 +25,20 @@ public class LightRefractor : MonoBehaviour {
 
                 Vector3 pos = this.transform.position;
                 photon.transform.position = pos;
-
+				
+				float yNormal = this.transform.eulerAngles.y;
+				float oldDirection = photon.transform.eulerAngles.y;
+				
                 photon.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y + refractor_angle, photon.transform.eulerAngles.z);
+				
+				
+				float newDirection = photon.transform.eulerAngles.y;
+				
+				
+				
+				if(Mathf.Abs(Mathf.DeltaAngle(yNormal,newDirection)) > 80 || Mathf.Abs(Mathf.DeltaAngle(yNormal,oldDirection)) < 100) {
+					Destroy(photon.gameObject);
+				}
             }
         }
     }
