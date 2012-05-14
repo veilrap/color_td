@@ -13,5 +13,10 @@ public class ParticleColor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         this.light.color = color;
+
+        if (Input.GetButtonDown("Reset"))
+        {
+            Destroy(this.gameObject);
+        }
 	}
 }

@@ -8,6 +8,9 @@ public class GridPosition : MonoBehaviour {
     public int x = 0;
     public int z = 0;
 
+    int original_x;
+    int original_z;
+
     int roundToStepGap(float f)
     {
         if (f == 0.0f)
@@ -38,6 +41,9 @@ public class GridPosition : MonoBehaviour {
             z = roundToStepGap(transform.localPosition.z);
         }
         transform.localPosition = new Vector3(x, transform.localPosition.y, z);
+
+        original_x = x;
+        original_z = z;
 	}
 	
 	// Update is called once per frame
@@ -45,6 +51,11 @@ public class GridPosition : MonoBehaviour {
         if (Mathf.RoundToInt(transform.localPosition.x) != x || Mathf.RoundToInt(transform.localPosition.z) != z)
         {
             transform.localPosition = new Vector3(x, transform.localPosition.y, z);
+        }
+        if (Input.GetButtonDown("Reset"))
+        {
+            x = original_x;
+            z = original_z;
         }
 	}
 }

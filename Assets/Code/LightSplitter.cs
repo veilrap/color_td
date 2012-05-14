@@ -23,14 +23,18 @@ public class LightSplitter : MonoBehaviour {
                 Vector3 pos = this.transform.position;
                 photon.transform.position = pos;
 
-                photon.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x,photon.transform.eulerAngles.y+90,photon.transform.eulerAngles.z);
-				
-				GameObject blueLight = (GameObject)Instantiate(photon.gameObject);
-                blueLight.transform.parent = parent;
-                blueLight.transform.position = photon.transform.position;
-                blueLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x,photon.transform.eulerAngles.y+180,photon.transform.eulerAngles.z);
+                if (Mathf.Abs(Mathf.DeltaAngle(photon.transform.eulerAngles.y, transform.eulerAngles.y)) < 15f)
+                {
 
-                blueLight.GetComponent<LightCollisionDetect>().lastCollision = this;
+                    photon.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y + 90, photon.transform.eulerAngles.z);
+
+                    GameObject blueLight = (GameObject)Instantiate(photon.gameObject);
+                    blueLight.transform.parent = parent;
+                    blueLight.transform.position = photon.transform.position;
+                    blueLight.transform.eulerAngles = new Vector3(photon.transform.eulerAngles.x, photon.transform.eulerAngles.y + 180, photon.transform.eulerAngles.z);
+
+                    blueLight.GetComponent<LightCollisionDetect>().lastCollision = this;
+                }
             }
         }
 	}
