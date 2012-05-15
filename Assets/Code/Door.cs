@@ -36,7 +36,9 @@ public class Door : MonoBehaviour {
 
             collider.enabled = false;
             renderer.enabled = false;
-
+			
+			this.audio.Play();
+			
             //transform.position += openOffset;
         }
         if (!allTargets && opened && !lockedOpen)
