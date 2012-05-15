@@ -30,14 +30,14 @@ public class Door : MonoBehaviour {
             
         }
 
-        if (allTargets && !opened || lockedOpen)
+        if (allTargets && !opened || (lockedOpen && !opened))
         {
             opened = true;
 
             collider.enabled = false;
             renderer.enabled = false;
-			
-			this.audio.Play();
+
+            audio.PlayOneShot(audio.clip);
 			
             //transform.position += openOffset;
         }

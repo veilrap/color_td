@@ -14,17 +14,12 @@ public class Pushable : MonoBehaviour {
 	
 	}
 
+    Collider collider;
+
     void Update()
     {
-        
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        pushing = true;
         if (pushing)
         {
-            Collider collider = collision.collider;
             Pusher pusher;
             if (pusher = collider.GetComponent<Pusher>())
             {
@@ -113,8 +108,15 @@ public class Pushable : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        pushing = true;
+        collider = collision.collider;
+    }
+
     void OnCollisionExit(Collision collision)
     {
         pushing = false;
+        collider = null;
     }
 }
