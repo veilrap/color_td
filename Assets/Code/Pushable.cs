@@ -42,6 +42,27 @@ public class Pushable : MonoBehaviour {
                     int xDiff = Mathf.RoundToInt(pushVector.x);
                     int zDiff = Mathf.RoundToInt(pushVector.z);
 
+                    if (Input.GetKey("left") || Input.GetKey("a"))
+                    {
+                        xDiff = -2;
+                        zDiff = 0;
+                    }
+                    if (Input.GetKey("right") || Input.GetKey("d"))
+                    {
+                        xDiff = 2;
+                        zDiff = 0;
+                    }
+                    if (Input.GetKey("up") || Input.GetKey("w"))
+                    {
+                        xDiff = 0;
+                        zDiff = 2;
+                    }
+                    if (Input.GetKey("down") || Input.GetKey("s"))
+                    {
+                        xDiff = 0;
+                        zDiff = -2;
+                    }
+
                     int xTarg = gridPosition.x + xDiff;
                     int zTarg = gridPosition.z + zDiff;
 					
