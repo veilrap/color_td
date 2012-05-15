@@ -4,6 +4,7 @@ using System.Collections;
 public class EndLevel : MonoBehaviour {
 	
 	public GameObject nextLevel = null;
+    public AudioClip clip = null;
 	
 	// Use this for initialization
 	void Start () {
@@ -51,6 +52,12 @@ public class EndLevel : MonoBehaviour {
 				    }
 			    }
 			}
+
+            if (clip != null)
+            {
+                chameleon.audio.clip = clip;
+                chameleon.audio.Play();
+            }
 		}
 		Destroy (this.gameObject);
 	}
