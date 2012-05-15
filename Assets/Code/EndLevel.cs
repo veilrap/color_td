@@ -91,6 +91,11 @@ public class EndLevel : MonoBehaviour {
             changeTime += Time.deltaTime;
             float percent = Mathf.Clamp01(changeTime / targetTime);
             RenderSettings.ambientLight = Color.Lerp(originalColor, targetColor, percent);
+
+            if (percent >= .99)
+            {
+                GameObject.Find("victorysplash").guiTexture.enabled = true;
+            }
         }
         else
         {
