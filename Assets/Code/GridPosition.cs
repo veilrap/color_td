@@ -58,4 +58,16 @@ public class GridPosition : MonoBehaviour {
             z = original_z;
         }
 	}
+
+    public bool locked = false;
+    void OnMouseDown()
+    {
+        Debug.Log(gameObject);
+        locked = !locked;
+
+        if (this.transform.FindChild("Lock"))
+        {
+            this.transform.FindChild("Lock").renderer.enabled = locked;
+        }
+    }
 }
