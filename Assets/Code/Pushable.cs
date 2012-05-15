@@ -8,7 +8,6 @@ public class Pushable : MonoBehaviour {
     public bool allowPush = true;
 
     bool pushing = false;
-    Collision collision;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +16,12 @@ public class Pushable : MonoBehaviour {
 
     void Update()
     {
+        
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        pushing = true;
         if (pushing)
         {
             Collider collider = collision.collider;
@@ -105,20 +110,11 @@ public class Pushable : MonoBehaviour {
                     }
                 }
             }
-            
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        this.collision = collision;
-        pushing = true;
-        
     }
 
     void OnCollisionExit(Collision collision)
     {
         pushing = false;
-        this.collision = null;
     }
 }
