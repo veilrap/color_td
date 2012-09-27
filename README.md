@@ -1,7 +1,8 @@
 Cammie the Chameleon and the Escape from Crystal Cave
 ========
-By Matthew Fay, Patrick Rodriguez, Stephanie Chang, Pamela Montalvo, Ivana Wongwajarachot
-mpfay@mit.edu, khold@mit.edu, niwen@mit.edu, pamamon@mit.edu, ivanaw@mit.edu
+Stephanie Chang, Matthew Fay, Pamela Montalvo, Patrick Rodriguez, Ivana Wongwajarachot
+
+niwen@mit.edu, mpfay@mit.edu, pamamon@mit.edu, khold@mit.edu, ivanaw@mit.edu
 
 About
 =====
